@@ -1,5 +1,6 @@
 import 'package:al_quran_app/shared_libraries/component/custom_button.dart';
 import 'package:al_quran_app/shared_libraries/utils/helpers/url_helper.dart';
+import 'package:al_quran_app/shared_libraries/utils/navigation/router/home_router.dart';
 import 'package:al_quran_app/shared_libraries/utils/resources/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +10,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homeRouer = HomeRouterImpl();
     return Scaffold(
       backgroundColor: Colors.white,
       bottomSheet: Container(
@@ -42,7 +44,7 @@ class HomeScreen extends StatelessWidget {
             ),
             CustomButton(
               text: "BACA QUR'AN",
-              onTap: () => {},
+              onTap: () => homeRouer.navigateToQuranScreen(),
             ),
             SizedBox(
               height: 8.h,

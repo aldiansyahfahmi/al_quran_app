@@ -1,4 +1,5 @@
 import 'package:al_quran_app/features/home/presentation/ui/home_screen.dart';
+import 'package:al_quran_app/features/quran/presentation/ui/quran_screen.dart';
 import 'package:al_quran_app/shared_libraries/utils/navigation/router/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,6 +32,8 @@ class MyApp extends StatelessWidget {
             switch (settings.name) {
               case AppRoutes.home:
                 return MaterialPageRoute(builder: (_) => const HomeScreen());
+              case AppRoutes.quran:
+                return MaterialPageRoute(builder: (_) => const QuranScreen());
               default:
                 return MaterialPageRoute(builder: (_) => const HomeScreen());
             }

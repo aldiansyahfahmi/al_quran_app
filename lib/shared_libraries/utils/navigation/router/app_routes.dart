@@ -1,5 +1,4 @@
 class AppRoutes {
   static const String home = '/home';
-  static const String example = '/example';
+  static const String quran = '/quran';
 }
-
