@@ -2,6 +2,7 @@ import 'package:al_quran_app/shared_libraries/component/custom_button.dart';
 import 'package:al_quran_app/shared_libraries/utils/helpers/url_helper.dart';
 import 'package:al_quran_app/shared_libraries/utils/resources/assets.gen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,13 +16,14 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: GestureDetector(
           onTap: () => UrlHelper.launch('https://aldev.tempatkoding.com/'),
-          child: const Row(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Create with ❤️ by '),
+              const Text('Create with ❤️ by '),
               Text(
                 'Aldi',
                 style: TextStyle(
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -35,22 +37,22 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Assets.images.icons.quran.svg(),
-            const SizedBox(
-              height: 48.0,
+            SizedBox(
+              height: 48.h,
             ),
             const CustomButton(
               text: "BACA QUR'AN",
             ),
-            const SizedBox(
-              height: 8.0,
+            SizedBox(
+              height: 8.h,
             ),
             const CustomButton(text: 'TERAKHIR DIBACA'),
-            const SizedBox(
-              height: 8.0,
+            SizedBox(
+              height: 8.h,
             ),
             const CustomButton(text: 'JADWAL SHOLAT'),
-            const SizedBox(
-              height: 8.0,
+            SizedBox(
+              height: 8.h,
             ),
             const CustomButton(text: 'PENGATURAN'),
           ],

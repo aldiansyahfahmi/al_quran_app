@@ -1,5 +1,6 @@
 import 'package:al_quran_app/shared_libraries/utils/resources/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -25,7 +26,10 @@ class CustomButton extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: const TextStyle(color: ColorName.purple),
+          style: TextStyle(
+            color: ColorName.purple,
+            fontSize: 14.sp,
+          ),
         ),
       ),
     );
