@@ -1,8 +1,11 @@
 import 'package:al_quran_app/features/home/presentation/ui/home_screen.dart';
+import 'package:al_quran_app/features/quran/presentation/bloc/surah_cubit/surah_cubit.dart';
 import 'package:al_quran_app/features/quran/presentation/ui/quran_screen.dart';
 import 'package:al_quran_app/shared_libraries/utils/navigation/router/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:page_transition/page_transition.dart';
 import '../shared_libraries/utils/constants/app_constants.dart';
 import '../shared_libraries/utils/navigation/navigation_helper.dart';
 import '../shared_libraries/utils/setup/app_setup.dart';
@@ -31,11 +34,23 @@ class MyApp extends StatelessWidget {
           onGenerateRoute: (settings) {
             switch (settings.name) {
               case AppRoutes.home:
-                return MaterialPageRoute(builder: (_) => const HomeScreen());
+                return PageTransition(
+                  child: const HomeScreen(),
+                  type: PageTransitionType.rightToLeft,
+                );
               case AppRoutes.quran:
-                return MaterialPageRoute(builder: (_) => const QuranScreen());
+                return PageTransition(
+                  child: BlocProvider(
+                    create: (context) => SurahCubit()..getSurah(),
+                    child: const QuranScreen(),
+                  ),
+                  type: PageTransitionType.rightToLeft,
+                );
               default:
-                return MaterialPageRoute(builder: (_) => const HomeScreen());
+                return PageTransition(
+                  child: const HomeScreen(),
+                  type: PageTransitionType.rightToLeft,
+                );
             }
           },
         );

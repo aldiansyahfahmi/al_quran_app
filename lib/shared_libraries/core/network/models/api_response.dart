@@ -48,5 +48,3 @@ class Meta {
         lastPage: json["last_page"],
       );
 }
-
-

@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:al_quran_app/shared_libraries/utils/constants/app_constants.dart';
 import 'package:dio/dio.dart';
-import '../../utils/constants/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiInterceptors extends Interceptor {
@@ -79,5 +79,3 @@ class ApiInterceptors extends Interceptor {
     return handler.next(err);
   }
 }
-
-

@@ -26,10 +26,11 @@ class CachedKey {
 
 class AppApi {
   const AppApi();
-  String get baseUrlDevelopment => 'http://';
-  String get baseUrlProduction => 'https://';
+  String get baseUrlDevelopment => 'https://api.quran.gading.dev/';
+  String get baseUrlProduction => 'https://api.quran.gading.dev/';
 
-  String get login => 'login';
+  String get surah => 'surah';
+  String get juz => 'juz';
 }
 
 class ErrorKey {

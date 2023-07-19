@@ -1,5 +1,9 @@
+import 'package:al_quran_app/features/quran/presentation/bloc/surah_cubit/surah_cubit.dart';
+import 'package:al_quran_app/features/quran/presentation/bloc/surah_cubit/surah_state.dart';
 import 'package:al_quran_app/shared_libraries/utils/resources/colors.dart';
+import 'package:al_quran_app/shared_libraries/utils/state/view_data_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class QuranScreen extends StatelessWidget {
@@ -36,15 +40,36 @@ class QuranScreen extends StatelessWidget {
             ],
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
-            Center(
-              child: Text("SURAH"),
+            BlocBuilder<SurahCubit, SurahState>(
+              builder: (context, state) {
+                final status = state.surahState.status;
+                if (status.isLoading) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (status.isHasData) {
+                  final data = state.surahState.data;
+                  return ListView.builder(
+                    itemCount: data!.length,
+                    itemBuilder: (context, index) {
+                      return Center(
+                        child: Text("SURAH ke-${index + 1}"),
+                      );
+                    },
+                  );
+                } else if (status.isError) {
+                  return Center(
+                    child: Text(state.surahState.message),
+                  );
+                } else {
+                  return const SizedBox();
+                }
+              },
             ),
-            Center(
+            const Center(
               child: Text("JUZ"),
             ),
-            Center(
+            const Center(
               child: Text("PENANDA"),
             ),
           ],
