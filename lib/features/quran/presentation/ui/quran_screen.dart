@@ -1,5 +1,8 @@
 import 'package:al_quran_app/features/quran/presentation/bloc/surah_cubit/surah_cubit.dart';
 import 'package:al_quran_app/features/quran/presentation/bloc/surah_cubit/surah_state.dart';
+import 'package:al_quran_app/shared_libraries/component/divider/custom_divider.dart';
+import 'package:al_quran_app/shared_libraries/component/item/surah_item.dart';
+import 'package:al_quran_app/shared_libraries/utils/constants/app_constants.dart';
 import 'package:al_quran_app/shared_libraries/utils/resources/colors.dart';
 import 'package:al_quran_app/shared_libraries/utils/state/view_data_state.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +18,7 @@ class QuranScreen extends StatelessWidget {
       initialIndex: 0,
       length: 3,
       child: Scaffold(
+        backgroundColor: ColorName.white,
         appBar: AppBar(
           backgroundColor: ColorName.purple,
           title: Text(
@@ -50,10 +54,20 @@ class QuranScreen extends StatelessWidget {
                 } else if (status.isHasData) {
                   final data = state.surahState.data;
                   return ListView.builder(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: AppConstants.app.defaultMargin,
+                    ),
                     itemCount: data!.length,
                     itemBuilder: (context, index) {
-                      return Center(
-                        child: Text("SURAH ke-${index + 1}"),
+                      final surah = data[index];
+                      return Column(
+                        children: [
+                          SurahItem(
+                            surah: surah,
+                            onTap: () => {},
+                          ),
+                          if (surah != data.last) const CustomDivider(),
+                        ],
                       );
                     },
                   );

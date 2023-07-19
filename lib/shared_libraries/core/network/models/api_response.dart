@@ -8,7 +8,7 @@ class ApiResponse<T> {
     required this.onDeserialized,
   });
 
-  bool? status;
+  String? status;
   int? code;
   String? message;
   T? data;

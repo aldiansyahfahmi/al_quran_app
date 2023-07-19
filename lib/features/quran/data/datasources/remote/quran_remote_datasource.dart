@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:al_quran_app/di/injections.dart';
 import 'package:al_quran_app/features/quran/data/models/response/surah_response_dto.dart';
 import 'package:al_quran_app/shared_libraries/core/network/models/api_response.dart';
@@ -15,7 +17,7 @@ class QuranRemoteDataSourceImpl implements QuranRemoteDataSource {
     try {
       final response = await dio.get(AppConstants.appApi.surah);
       return ApiResponse.fromJson(
-        response.data,
+        jsonDecode(response.data),
         onDataDeserialized: (json) => List<SurahDataDto>.from(
           json.map(
             (x) => SurahDataDto.fromJson(x),
