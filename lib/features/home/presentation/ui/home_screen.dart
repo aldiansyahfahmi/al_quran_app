@@ -1,4 +1,4 @@
-import 'package:al_quran_app/shared_libraries/component/custom_button.dart';
+import 'package:al_quran_app/shared_libraries/component/button/custom_button.dart';
 import 'package:al_quran_app/shared_libraries/utils/helpers/url_helper.dart';
 import 'package:al_quran_app/shared_libraries/utils/navigation/router/home_router.dart';
 import 'package:al_quran_app/shared_libraries/utils/resources/assets.gen.dart';
