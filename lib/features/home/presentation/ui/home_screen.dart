@@ -40,21 +40,31 @@ class HomeScreen extends StatelessWidget {
             SizedBox(
               height: 48.h,
             ),
-            const CustomButton(
+            CustomButton(
               text: "BACA QUR'AN",
+              onTap: () => {},
             ),
             SizedBox(
               height: 8.h,
             ),
-            const CustomButton(text: 'TERAKHIR DIBACA'),
+            CustomButton(
+              text: 'TERAKHIR DIBACA',
+              onTap: () => {},
+            ),
             SizedBox(
               height: 8.h,
             ),
-            const CustomButton(text: 'JADWAL SHOLAT'),
+            CustomButton(
+              text: 'JADWAL SHOLAT',
+              onTap: () => {},
+            ),
             SizedBox(
               height: 8.h,
             ),
-            const CustomButton(text: 'PENGATURAN'),
+            CustomButton(
+              text: 'PENGATURAN',
+              onTap: () => {},
+            ),
           ],
         ),
       ),
