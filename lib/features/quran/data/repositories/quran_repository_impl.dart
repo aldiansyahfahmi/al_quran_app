@@ -27,4 +27,25 @@ class QuranRepositoryImpl implements QuranRepository {
       );
     }
   }
+
+  @override
+  Future<Either<FailureResponse, SurahDataEntity>> getSurahDetail(
+      {required int surahNumber}) async {
+    try {
+      final response =
+          await quranRemoteDataSource.getSurahDetails(surahNumber: surahNumber);
+      return Right(
+        quranMapper.mapSurahDataDtoToSurahDataEntity(response.data!),
+      );
+    } on DioException catch (error) {
+      return Left(
+        FailureResponse(
+          errorMessage:
+              error.response?.data[AppConstants.errorKey.message]?.toString() ??
+                  error.response.toString(),
+          statusCode: error.response?.statusCode ?? 500,
+        ),
+      );
+    }
+  }
 }

@@ -2,6 +2,8 @@ import 'package:al_quran_app/features/quran/presentation/bloc/surah_cubit/surah_
 import 'package:al_quran_app/features/quran/presentation/bloc/surah_cubit/surah_state.dart';
 import 'package:al_quran_app/shared_libraries/component/item/surah_item.dart';
 import 'package:al_quran_app/shared_libraries/utils/constants/app_constants.dart';
+import 'package:al_quran_app/shared_libraries/utils/navigation/argument/surah_details_argument.dart';
+import 'package:al_quran_app/shared_libraries/utils/navigation/router/quran_router.dart';
 import 'package:al_quran_app/shared_libraries/utils/resources/colors.dart';
 import 'package:al_quran_app/shared_libraries/utils/state/view_data_state.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +15,7 @@ class QuranScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final QuranRouter quranRouter = QuranRouterImpl();
     return DefaultTabController(
       initialIndex: 0,
       length: 3,
@@ -62,7 +65,11 @@ class QuranScreen extends StatelessWidget {
                       return SurahItem(
                         divider: surah == data.last ? false : true,
                         surah: surah,
-                        onTap: () => {},
+                        onTap: () => quranRouter.navigateToSurahDetailsScreen(
+                          surahDetailsArgument: SurahDetailsArgument(
+                            surahDataEntity: surah,
+                          ),
+                        ),
                       );
                     },
                   );

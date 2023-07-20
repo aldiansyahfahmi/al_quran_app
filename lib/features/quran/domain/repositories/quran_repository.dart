@@ -4,4 +4,6 @@ import 'package:dartz/dartz.dart';
 
 abstract class QuranRepository {
   Future<Either<FailureResponse, List<SurahDataEntity>>> getSurah();
+  Future<Either<FailureResponse, SurahDataEntity>> getSurahDetail(
+      {required int surahNumber});
 }

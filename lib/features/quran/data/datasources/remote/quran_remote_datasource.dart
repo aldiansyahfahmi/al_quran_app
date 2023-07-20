@@ -8,6 +8,7 @@ import 'package:dio/dio.dart';
 
 abstract class QuranRemoteDataSource {
   Future<ApiResponse<List<SurahDataDto>>> getSurah();
+  Future<ApiResponse<SurahDataDto>> getSurahDetails({required int surahNumber});
 }
 
 class QuranRemoteDataSourceImpl implements QuranRemoteDataSource {
@@ -23,6 +24,22 @@ class QuranRemoteDataSourceImpl implements QuranRemoteDataSource {
             (x) => SurahDataDto.fromJson(x),
           ),
         ),
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<ApiResponse<SurahDataDto>> getSurahDetails(
+      {required int surahNumber}) async {
+    try {
+      final response = await dio.get(
+        '${AppConstants.appApi.surah}/$surahNumber',
+      );
+      return ApiResponse.fromJson(
+        jsonDecode(response.data),
+        onDataDeserialized: (json) => SurahDataDto.fromJson(json),
       );
     } catch (e) {
       rethrow;
