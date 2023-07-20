@@ -2,6 +2,8 @@ import 'package:al_quran_app/features/home/presentation/ui/home_screen.dart';
 import 'package:al_quran_app/features/quran/presentation/bloc/surah_cubit/surah_cubit.dart';
 import 'package:al_quran_app/features/quran/presentation/ui/quran_screen.dart';
 import 'package:al_quran_app/shared_libraries/utils/navigation/router/app_routes.dart';
+import 'package:al_quran_app/shared_libraries/utils/resources/colors.dart';
+import 'package:al_quran_app/shared_libraries/utils/resources/fonts.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,6 +25,10 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: AppConstants.app.appName,
           debugShowCheckedModeBanner: Config.isDebug,
+          theme: ThemeData(
+            fontFamily: FontFamily.poppins,
+            scaffoldBackgroundColor: ColorName.white,
+          ),
           builder: (context, child) {
             return ScrollConfiguration(
               behavior: MyBehavior(),

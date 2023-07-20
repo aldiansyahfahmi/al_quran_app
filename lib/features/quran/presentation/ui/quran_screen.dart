@@ -1,6 +1,5 @@
 import 'package:al_quran_app/features/quran/presentation/bloc/surah_cubit/surah_cubit.dart';
 import 'package:al_quran_app/features/quran/presentation/bloc/surah_cubit/surah_state.dart';
-import 'package:al_quran_app/shared_libraries/component/divider/custom_divider.dart';
 import 'package:al_quran_app/shared_libraries/component/item/surah_item.dart';
 import 'package:al_quran_app/shared_libraries/utils/constants/app_constants.dart';
 import 'package:al_quran_app/shared_libraries/utils/resources/colors.dart';
@@ -60,14 +59,10 @@ class QuranScreen extends StatelessWidget {
                     itemCount: data!.length,
                     itemBuilder: (context, index) {
                       final surah = data[index];
-                      return Column(
-                        children: [
-                          SurahItem(
-                            surah: surah,
-                            onTap: () => {},
-                          ),
-                          if (surah != data.last) const CustomDivider(),
-                        ],
+                      return SurahItem(
+                        divider: surah == data.last ? false : true,
+                        surah: surah,
+                        onTap: () => {},
                       );
                     },
                   );
