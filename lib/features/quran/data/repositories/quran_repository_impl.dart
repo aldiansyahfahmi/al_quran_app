@@ -1,3 +1,4 @@
+import 'package:al_quran_app/features/quran/data/datasources/local/quran_local_datasource.dart';
 import 'package:al_quran_app/features/quran/data/datasources/remote/quran_remote_datasource.dart';
 import 'package:al_quran_app/features/quran/data/mapper/quran_mapper.dart';
 import 'package:al_quran_app/features/quran/domain/entities/response/surah_response_entity.dart';
@@ -11,6 +12,7 @@ class QuranRepositoryImpl implements QuranRepository {
   final QuranMapper quranMapper = QuranMapper();
   final QuranRemoteDataSource quranRemoteDataSource =
       QuranRemoteDataSourceImpl();
+  final QuranLocalDataSource quranLocalDataSource = QuranLocalDataSourceImpl();
   @override
   Future<Either<FailureResponse, List<SurahDataEntity>>> getSurah() async {
     try {
@@ -37,6 +39,24 @@ class QuranRepositoryImpl implements QuranRepository {
       return Right(
         quranMapper.mapSurahDataDtoToSurahDataEntity(response.data!),
       );
+    } on DioException catch (error) {
+      return Left(
+        FailureResponse(
+          errorMessage:
+              error.response?.data[AppConstants.errorKey.message]?.toString() ??
+                  error.response.toString(),
+          statusCode: error.response?.statusCode ?? 500,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<FailureResponse, List<SurahDataEntity>>>
+      getSurahFromJson() async {
+    try {
+      final response = await quranLocalDataSource.getSurahFromJson();
+      return Right(quranMapper.mapSurahDataDtoToEntity(response.data!));
     } on DioException catch (error) {
       return Left(
         FailureResponse(

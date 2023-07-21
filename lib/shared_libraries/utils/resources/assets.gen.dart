@@ -17,6 +17,16 @@ class $AssetsImagesGen {
   $AssetsImagesIconsGen get icons => const $AssetsImagesIconsGen();
 }
 
+class $AssetsJsonGen {
+  const $AssetsJsonGen();
+
+  /// File path: assets/json/surah.json
+  String get surah => 'assets/json/surah.json';
+
+  /// List of all assets
+  List<String> get values => [surah];
+}
+
 class $AssetsImagesIconsGen {
   const $AssetsImagesIconsGen();
 
@@ -31,6 +41,7 @@ class Assets {
   Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsJsonGen json = $AssetsJsonGen();
 }
 
 class AssetGenImage {
